@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use Illuminate\Http\Request;
 
 class ComponentController extends Controller {
 
@@ -95,4 +96,31 @@ class ComponentController extends Controller {
             ],
         ]);
     }
+
+
+
+    public function getPriceUpdateResults($gasoline_regular = 'co', $gasoline_premium = 'co', $normal_butane = 'co', $ethanol = 'co', $emtbe = 'co', $btx_weighted = 'co') {
+
+
+        $gasoline_redddgular = $gasoline_regular;
+        $response = [
+            'error' => false,
+            'data' => [
+                  'hola' => 2
+            ]
+        ];
+        return response()->json($response);
+
+        // return response()->json([
+        //     'error' => false,
+        //     'data' => [
+        //         'hola' => 2
+        //     ],
+        // ]);
+ 
+    }
+
+
+
+
 }
