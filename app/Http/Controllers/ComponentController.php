@@ -138,35 +138,15 @@ class ComponentController extends Controller {
                     ];
                 }
 
-                // $blendstoks_increased_octane_rows = [];
-                // //Spec.- aromatics fields responds to the name BTX
-                // $blendstoks_increased_octane = $country->gasolineComponents()->select('id', 'blendstoks', 'bno_on', 'bno_rvp', 'logistica', 'price', 'mtbe', 'aromatics', 'ethanol')
-                // ->where('gasoline_type', $gasoline_type)->where('quality_restriction', "increased-octane-number")->get();
+                // $locale = App::currentLocale();
 
-                // foreach ($blendstoks_increased_octane as $blendstok_increased_octane) {
-                //     //Step 4
-                //     $bno_increased =  ( $gasoline_regular + ($blendstok_increased_octane->bno_on - 87) * $octane_adjust ) + ((pow($blendstok_increased_octane->bno_rvp,1.25) - pow(9,1.25)) * $rvp_adjust );
-                //     $db_mtbe_increased = $blendstok_increased_octane->mtbe == 'NULL' ? 0 : str_replace('%','', $blendstok_increased_octane->mtbe);
-                //     $db_mtbe_increased = $db_mtbe_increased == 0 ? 0 : $db_mtbe_increased / 100;
-                //     $db_btx_increased = $blendstok_increased_octane->aromatics == 'NULL' ? 0 : str_replace('%','', $blendstok_increased_octane->aromatics);
-                //     $db_btx_increased = $db_btx_increased == 0 ? 0 : $db_btx_increased / 100;
-                //     $db_ethanol_increased = $blendstok_increased_octane->ethanol == 'NULL' ? 0 : str_replace('%','', $blendstok_increased_octane->ethanol);
-                //     $db_ethanol_increased = $db_ethanol_increased == 0 ? 0 : $db_ethanol_increased / 100;
-                //     $blendstoks_increased_octane_rows[str_replace('-', '_', $blendstok_increased_octane->blendstoks)] = [
-                //         'price' => $blendstok_increased_octane->price,
-                //         'bno_on' => $blendstok_increased_octane->bno_on,
-                //         'bno_rvp' => $blendstok_increased_octane->bno_rvp,
-                //         'logistica' => $blendstok_increased_octane->logistica,
-                //         'bno' => $bno_increased, //BNO
-                //         'estimate_price' => round( (((1-$db_mtbe_increased - $db_btx_increased - $db_ethanol_increased) * $bno_increased ) + $db_mtbe_increased * $emtbe + $db_btx_increased * $btx_weighted + $db_ethanol_increased * $ethanol + $blendstok_increased_octane->logistica),2)
-                //     ];
-                // }
+                // $json_language = __('dynamic.content.component-tab');  // $dic[$gasoline_type];
+                // $var_gasoline = $json_language[$gasoline_type];
 
+                $var_gasoline = __('dynamic.content.component-tab.' . $gasoline_type);
 
-
-                $gasoline_type_rows[$gasoline_type] = [
+                $gasoline_type_rows[$var_gasoline] = [
                         'blendstok_constant' => $blendstoks_constant_octane_rows
-                        // 'blendstok_increased' => $blendstoks_increased_octane_rows
                     ];
             }
             
@@ -183,17 +163,6 @@ class ComponentController extends Controller {
             ]
         ];
         return response()->json($response);
-
-        // return response()->json([
-        //     'error' => false,
-        //     'data' => [
-        //         'hola' => 2
-        //     ],
-        // ]);
  
     }
-
-
-
-
 }
