@@ -121,7 +121,7 @@ class ComponentController extends Controller {
 
                 foreach ($blendstoks_constant_octane as $blendstok_constant_octane) {
                     //Step 4
-                    $bno =  ( $gasoline_regular + ($blendstok_constant_octane->bno_on - 87) * $octane_adjust ) + ((pow($blendstok_constant_octane->bno_rvp,1.25) - pow(9,1.25)) * $rvp_adjust );
+                    $bno =  ( $gasoline_regular + ($blendstok_constant_octane->bno_on - 92) * $octane_adjust ) + ((pow($blendstok_constant_octane->bno_rvp,1.25) - pow(9,1.25)) * $rvp_adjust );
                     $db_mtbe = $blendstok_constant_octane->mtbe == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->mtbe);
                     $db_mtbe = $db_mtbe == 0 ? 0 : $db_mtbe / 100;
                     $db_btx = $blendstok_constant_octane->aromatics == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->aromatics);
