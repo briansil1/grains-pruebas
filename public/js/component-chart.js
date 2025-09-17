@@ -135,7 +135,6 @@ $( function() {
     $('#chart-accordion-download-component-db').on('click', () => window.open(_getComponentsFileUrl(), '_blank'));
 
     $('#modal-price-update-open').on('click', evt => {
-        alert("Entra");
         evt.preventDefault();
         const modalGasolineEthanolBlending = document.getElementById('modalGasolineEthanolBlending');
 
@@ -169,12 +168,12 @@ $( function() {
         var x = document.getElementById('price-update-form').checkValidity();
         if (x) {
 
-            let gasoline_regular = $('#price_gasoline_regular').val() != '' ? $('#price_gasoline_regular').val() : 6;
-            let gasoline_premium = $('#price_gasoline_premium').val()
-            let normal_butane = $('#price_normal_butane').val()
-            let ethanol = $('#price_ethanol').val()
-            let emtbe = $('#price_mtbe').val()
-            let btx_weighted = $('#price_btx_weighted').val()
+            let gasoline_regular = $('#price_gasoline_regular').val();
+            let gasoline_premium = $('#price_gasoline_premium').val();
+            let normal_butane = $('#price_normal_butane').val();
+            let ethanol = $('#price_ethanol').val();
+            let emtbe = $('#price_mtbe').val();
+            let btx_weighted = $('#price_btx_weighted').val();
             country_id = $('#country-select').val();
             
             //determinePriceUpdate(country_id, 2.427, 2.737, 1.02622916666667, 1.665, 3.022, 3.8894)
@@ -229,7 +228,7 @@ $( function() {
                 }
             },
             error: function (response) {
-                alert("Todo mal" + response);
+                alert("There was a problem. Please try again." + response);
                 console.log(response);
             }
         });
@@ -351,7 +350,7 @@ function determinePriceUpdate(country_id, gasolineRegular, gasolinePremium, norm
             }
         },
         error: function (response) {
-            alert("Todo mal" + response);
+            alert("There was a problem. Please try again." + response);
             console.log(response);
         }
     });
@@ -369,7 +368,7 @@ function formatPriceUpdateTable(response, octane_number){
             for(const gasoline_type in gas_quality.gasoline_type_rows) {
                 const gas_type = gas_quality.gasoline_type_rows[gasoline_type];
                 html_table_data_historic+= '<tr class="table-primary"><th class="data_historic_header">2024</th><th class="data_historic_header">'+ gasoline_type + '<th class="data_historic_data">' + gas_type.blendstok_constant.equivalent_gasoline_e0.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e10.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e15.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e20.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e25.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e30.price +'</th></tr>';
-                html_table_data_updated+= '<tr class="table-primary"><th class="data_updated_header">2024</th><th class="data_updated_header">'+ gasoline_type + '<th class="data_updated_data">' + gas_type.blendstok_constant.equivalent_gasoline_e0.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e10.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e15.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e20.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e25.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e30.estimate_price +'</th></tr>';
+                html_table_data_updated+= '<tr class="table-primary"><th class="data_updated_header">'  + lang_json.updated + '</th><th class="data_updated_header">'+ gasoline_type + '<th class="data_updated_data">' + gas_type.blendstok_constant.equivalent_gasoline_e0.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e10.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e15.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e20.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e25.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e30.estimate_price +'</th></tr>';
             };
         }
     };
