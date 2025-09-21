@@ -354,7 +354,6 @@ function determinePriceUpdate(country_id, gasolineRegular, gasolinePremium, norm
             console.log(response);
         }
     });
-    
 
 }
 

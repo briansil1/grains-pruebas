@@ -75,4 +75,28 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    /**
+     * Destroy an authenticated session.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function destroySession(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if (isset($request->json) && $request->json) {
+            return response()->json([
+                "errors" => false,
+                "token" => csrf_token()
+            ], 200);
+        }
+
+        return redirect('/en/static-home');
+    }
 }

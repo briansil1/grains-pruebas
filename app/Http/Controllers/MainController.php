@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Support\Facades\Session;
 
 class MainController extends Controller
 {
@@ -34,13 +35,9 @@ class MainController extends Controller
             return redirect(route(__('routes.home')));
         }
 
-        // if (!session('continent_iddsd')) {
-        //     return redirect(route(__('routes.home')));
-        // }
-
-        // if (!session('continent_iddsd')) {
-        //     return redirect(route(__('routes.home')));
-        // }
+        if (!session('continent_id')) {
+            return redirect(route('logout-session'));
+        }
        
         $continent_id = session('continent_id');
 
@@ -116,7 +113,8 @@ class MainController extends Controller
             'gasolineTypes' => $gasoline_types,
             'gasolineGrades' => $gasoline_grades,
             'gasolineCompareTypes' => $gasolineCompareTypes,
-            'gasolineCompareGrades' => $gasolineCompareGrades
+            'gasolineCompareGrades' => $gasolineCompareGrades,
+            'continent_id' => $continent_id
         ]);
     }
 
@@ -184,6 +182,51 @@ class MainController extends Controller
             return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-filename')));
         } else {
             throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.emission-filename'));
+        }
+    }
+
+    
+
+    public function toolsContinent($continent_id = null) {
+        if (!Auth::check()) {
+            return redirect(route(__('routes.home')));
+        }
+
+        // if (!session('continent_iddsd')) {
+        //     return redirect(route(__('routes.home')));
+        // }
+
+        // if (!session('continent_iddsd')) {
+        //     return redirect(route(__('routes.home')));
+        // }
+       
+        Session::put('continent_id', $continent_id);
+
+        $locale = app()->getLocale();
+        $base_l = explode('_', $locale)[0];
+        $locale = Locale::where('code', $locale)->first();
+        if (empty($locale)) {
+            $locale = Locale::where('code', $base_l)->first();
+        }
+
+        // $country_profiles = Profile::select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->get();
+        $country_profiles = Profile::join('countries', 'countries.id', '=', 'profiles.country_id')
+            ->join('regions', 'regions.id', '=', 'countries.region_id')
+            ->join('continents', 'continents.id', '=', 'regions.continent_id')
+            ->where('continents.id', $continent_id)
+            ->select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->get();
+        $c_ids = [];
+
+        foreach ($country_profiles as $profile) {
+            $c_ids[] = $profile->country_id;
+        }
+        $countries = Country::whereIn('id', $c_ids)->get();
+
+        if (empty($country)) {
+            return view('dynamic', [
+                'tab' => 1,
+                'countryList' => $countries
+            ]);
         }
     }
 }
