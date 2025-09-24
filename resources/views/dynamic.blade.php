@@ -100,7 +100,7 @@
                         
                         <h2 class="h1 uppercase text-2xl md:text-5xl container oswald"><a href="{{ route(__('routes.home')) }}" class="text-white">{{ __('dynamic.content.profiles') }}</a></h2>
                         
-                        <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent"></label>
+                        <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent">@if (isset($continent_text)) {{ $continent_text }} @endif</label>
                         <h3 class="text-white mt-0 pt-0 oswald">{{ __('dynamic.content.dynamic-tool') }}</h3>
 
 

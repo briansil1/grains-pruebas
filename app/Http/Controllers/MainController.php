@@ -40,6 +40,7 @@ class MainController extends Controller
         }
        
         $continent_id = session('continent_id');
+        $continent_text = session('continent_text');
 
         $locale = app()->getLocale();
         $base_l = explode('_', $locale)[0];
@@ -64,6 +65,8 @@ class MainController extends Controller
         if (empty($country)) {
             return view('dynamic', [
                 'tab' => $tab,
+                'continent_id' => $continent_id,
+                'continent_text' => $continent_text,
                 'countryList' => $countries
             ]);
         }
@@ -192,15 +195,15 @@ class MainController extends Controller
             return redirect(route(__('routes.home')));
         }
 
-        // if (!session('continent_iddsd')) {
-        //     return redirect(route(__('routes.home')));
-        // }
-
-        // if (!session('continent_iddsd')) {
-        //     return redirect(route(__('routes.home')));
-        // }
+        if (!session('continent_id')) {
+            return redirect(route('logout-session'));
+        }
        
         Session::put('continent_id', $continent_id);
+
+        $continent_text = session('continent_text');
+
+        //BAMS TODO Hacer el model de continents y mandarlo en el servicio
 
         $locale = app()->getLocale();
         $base_l = explode('_', $locale)[0];
@@ -225,6 +228,8 @@ class MainController extends Controller
         if (empty($country)) {
             return view('dynamic', [
                 'tab' => 1,
+                'continent_id' => $continent_id,
+                'continent_text' => $continent_text,
                 'countryList' => $countries
             ]);
         }

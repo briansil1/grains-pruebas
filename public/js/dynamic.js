@@ -56,7 +56,7 @@ $(function () {
     continent_names_json = GetLanguageJsonn(lang);
 
     const continent_label = document.getElementById('tool_continent');
-    continent_label.innerHTML = continent_names_json.america;
+    // continent_label.innerHTML = continent_names_json.america;
   
     $('#switch_continent_america').on('click', evt => {
         evt.preventDefault();

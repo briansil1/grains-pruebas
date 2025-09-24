@@ -36,6 +36,7 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         app()->setLocale($request->user_locale);
+        Session::put('continent_text', $request->continent_text_hidden);
         Session::put('continent_id', $request->continent_hidden);
 
         $request->authenticate();
