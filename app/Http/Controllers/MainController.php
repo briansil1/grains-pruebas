@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Session;
+use App\Models\Continent;
 
 class MainController extends Controller
 {
@@ -201,9 +202,11 @@ class MainController extends Controller
        
         Session::put('continent_id', $continent_id);
 
-        $continent_text = session('continent_text');
-
-        //BAMS TODO Hacer el model de continents y mandarlo en el servicio
+        $continent = Continent::find($continent_id);
+        if(!empty($continent)){
+            Session::put('continent_text', $continent->name);
+            $continent_text = $continent->name;
+        }
 
         $locale = app()->getLocale();
         $base_l = explode('_', $locale)[0];
