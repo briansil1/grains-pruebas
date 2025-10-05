@@ -212,6 +212,7 @@ return [
     'pdf-files' => [
         'profile-pdf-filename' => 'perfiles_descarga.xlsx',
         'emission-filename' => 'emisiones_descarga.xlsx',
-        'component-pdf-filename' => 'mezcla_componentes.xlsx'
+        'component-pdf-filename' => 'mezcla_componentes.xlsx',
+        'ghg-filename' => 'ghg_descarga.xlsx'
     ],
 ];

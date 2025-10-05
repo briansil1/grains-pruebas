@@ -212,6 +212,7 @@ return [
     'pdf-files' => [
         'profile-pdf-filename' => 'profiles_download.xlsx',
         'emission-filename' => 'emissions_download.xlsx',
-        'component-pdf-filename' => 'blending_components.xlsx'
+        'component-pdf-filename' => 'blending_components.xlsx',
+        'ghg-filename' => 'ghg_download.xlsx'
     ],
 ];
