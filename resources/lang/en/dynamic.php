@@ -11,6 +11,7 @@ return [
         'profile' => 'Profile',
         'components' => 'Gasoline/ethanol blending components',
         'impact' => 'Ethanol impact on emissions',
+        'ghg' => 'Life Cycle GHG Emissions',
         'profile-tab' => [
             'profile-title' => 'Gasoline supply/demand',
             'profile-text' => 'La producción total de gasolina en Colombia se ha mantenido entre 4.000 y 5.000 millones de litros anuales, con una participación de mercado de aproximadamente 5% de gasolina extra (AKI 87) y 95% de la gasolina regular (AKI 81). La demanda es mayor por lo que es necesario importar gasolinas, siendo Estados Unidos el principal origen de las importaciones.',
@@ -19,6 +20,7 @@ return [
             'gasoline-components-text' => 'The average content of available gasoline components used to produce gasoline is as follows:',
             'import-title' => 'Imports',
             'demand-title' => 'Demand',
+            'exports-title' => 'Exports',
             'ethanol-title' => 'Ethanol',
             'ethanol-text' => 'Se permite la mezcla de etanol con gasolina en Colombia, permitido en 2010 con un 5% alcanzando actualmente un 10% de acuerdo con el Decreto 675 de 2015. El E10 es el grado predominante en el país excepto en frontera con Venezuela. A partir de 2015, Colombia empezó a importar etanol de EE. UU. y actualmente el 30% de las ventas nacionales de etanol son de importaciones.',
             'comparative-section' => 'Comparative section',
@@ -42,7 +44,7 @@ return [
             'instructions-2' => 'The average content of the available components used to produce gasoline, and their average prices in 2024 are as follows:',
             'instructions-3' => 'Possible optimizations of the blending components for gasoline production can also be plotted, incorporating different levels of ethanol.',
             'instructions-4' => 'By placing the mouse cursor over the bars in the chart, you can see the percentages of the components in the gasoline for the selected countries, pointing at the top of the chart the production costs of each level of ethanol blending.',
-            'instructions-5' => 'Prices vary by adjusting the gasoline components for blends with ethanol, reaching the minimum octane number allowed by the country (constant octane number), or simply adding ethanol without limiting the octane number (increased octane number). Increasing ethanol content in in the gasoline blend reduces the use of polluting and higher-priced components. The obtained blendstocks meet the minimum octane requirements of each country. Prices correspond to average reference market 2024 prices. Prices can be updated using the following link:',
+            'instructions-5' => 'Prices vary by adjusting the gasoline components for blends with ethanol,  reaching the minimum octane number allowed by the country (constant octane number), or simply adding ethanol without limiting the octane number (increased octane number). Comparisons can be made with gasoline from several countries or from the same country.',
             'select-gasoline' => 'Select gasoline',
             'clean' => 'Clear',
             'compare' => 'Compare',
@@ -110,7 +112,9 @@ return [
                 'ethanol' => 'Ethanol',
                 'hydrocracked_gasoline' => 'Hydrocracked gasoline',
                 'normal_pentane' => 'Normal pentane',
-                'low_octane_blendstock' => 'Low octane blendstock'
+                'low_octane_blendstock' => 'Low octane blendstock',
+                'etbe' => 'ETBE',
+                'tame' => 'TAME'
             ],
             'modal-price-update' => 'Please input the new prices. Prices should be spot reference prices in US dollars per gallon from the same period in time and place (e.g. US Gulf Coast).  If needed, prices can be obtained from the US Grains\’s “Ethanol Market and Price Data” Report.',
             'modal-price-update-fuel-component' => 'Fuel / Component',
@@ -171,6 +175,18 @@ return [
             'graph-euro-emissions' => 'Euro 6 Standard',
             'vehicles-stop-circulating' => 'The emission reduction is equivalent to the following thousands of vehicles ceasing to circulate daily:'
         ],
+        'ghg-tab' => [
+            'first-paragraph' => 'The Global Agenda for Climate Action calls for countries, cities and regions, businesses, and members of civil society around the world to to achieve a low-carbon and climate-resilient economies in support of the Paris Agreement. Road Transportation accounts for 15% of total GHG emissions (IPCC,2023).',
+            'second-paragraph' => 'Ethanol gasoline blends are an internationally adopted practice that offer significant short-term benefits. When implemented, these blends can lead to reduced green-house gas emissions, improved air quality, and economic advantages for consumers. As a renewable fuel, ethanol decreases our reliance on oil. Its high-octane content also substantially enhances the quality of blended fuel, contributing to cleaner cities and lower pollutant emissions. Biofuels are an important solution to achieve reduction targets in the transportation sector.',
+            'third-paragraph' => 'The GHG emission reduction for each country is calculated using the GREET and the RED III life cycle GHG emission methodologies and compared to current Target.',
+            'compare-select' => 'Select',
+            'ghg' => 'GHG',
+            'graph-title-redii' => 'Life cycle Emissions RED III',
+            'graph-title-greet' => 'Life cycle Emissions GREET',
+            'circular-graph-title-greet' => 'Global GHG Emissions for 2023',
+            'ipcc-graph-title-greet' => 'IPCC Transport Sector Sustainable Sector Scenario, 2023',
+            'graph-source' => 'Source: IPCC, 2023'
+        ],
     ],
     'table-texts' => [
         'header-name' => 'Current Regulation',
@@ -200,14 +216,18 @@ return [
         'ethanol' => 'ethanol.png',
         'icon' => 'icon.png',
         'import' => 'imports.png',
+        'export' => 'exports.png',
         'production' => 'production.png',
         'tab-3-data' => 'tab-3-data-en.png',
         'prod_default' => 'txt-prod-eng.png',
         'imports_default' => 'txt-imports-eng.png',
         'ethanol_default' => 'txt-ethanol-eng.png',
         'component_blending' => 'graph_components_eng.png',
+        'component_blending_europe' => 'graph_components_europe_eng.png', 
         'component_benefits' => 'benefits_components_eng.png',
         'component_comparison' => 'components-comparison.png',
+        'life_cycle_emmision' => 'ghg-grafica-circular-ingles.png',
+        'ghg_fuels_per_year' => 'fuels_per_year.png'
     ],
     'pdf-files' => [
         'profile-pdf-filename' => 'profiles_download.xlsx',
