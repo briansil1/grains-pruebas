@@ -93,6 +93,8 @@ return [
             'ron-95' => 'RON 95',
             'constant-octane-number' => 'Número de octano constante',
             'increased-octane-number' => 'Aumento de número de octano',
+            'gasoline-95' => 'Gasoline 95',
+            'gasoline-98' => 'Gasoline 98',
             'legends' => [
                 'catalytic_gasoline' => 'Catalítica',
                 'reformate' => 'Reformado',
